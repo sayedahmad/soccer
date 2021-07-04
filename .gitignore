@@ -132,3 +132,6 @@ dmypy.json
 # Virtual environment 
 bin/
 bin/*
+
+# database 
+src/*.sqlite3
