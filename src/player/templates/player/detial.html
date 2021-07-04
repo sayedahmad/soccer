@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+    Player | Detial 
+{% endblock title %} 
+
+{%block content %} 
+
+<!--shows detial of a single player-->
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{{player.name}}</h5>
+    </div>
+    <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">Player ID</dt>
+      <dd class="col-sm-9">{{ player.p_id }}</dd>
+      <dt class="col-sm-3">Player Name</dt>
+      <dd class="col-sm-9">{{ player.name }}</dd>
+      <dt class="col-sm-3">Total Match</dt>
+      <dd class="col-sm-9">{{ player.total_matches }}</dd>
+
+      <dt class="col-sm-3">Total Won</dt>
+      <dd class="col-sm-9">{{ player.total_win }}</dd>
+      <dt class="col-sm-3">Total Draw</dt>
+      <dd class="col-sm-9">{{ player.total_Draw }}</dd>
+      <dt class="col-sm-3">Total Lost</dt>
+      <dd class="col-sm-9">{{ player.total_lost }}</dd>
+      <dt class="col-sm-3">Total Marks</dt>
+      <dd class="col-sm-9">{{ player.total_marks }}</dd>
+      <dt class="col-sm-3">Ranking</dt>
+      <dd class="col-sm-9">{{ player.ranking }}</dd>
+    </dl>
+
+    </div>
+</div>
+{% endblock content %}

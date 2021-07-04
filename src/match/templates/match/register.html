@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Match | Registration
+{% endblock title %}
+
+{% block content %}
+<!--Match Registration Form -->
+   <form method="post" action="">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+{% endblock content %}

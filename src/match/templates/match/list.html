@@ -1,0 +1,57 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+    Matchs 
+{% endblock title %} 
+
+{%block content %} 
+
+<a class="btn btn-primary" href="{% url 'match_register' %}"><i class="fa fa-plus" aria-hidden="true"> Add </i></a>
+<a class="btn btn-primary" href="{% url 'match_player' %}"><i class="fa fa-plus" aria-hidden="true"> Match Maker </i></a>
+
+<!--shows list of all matchs-->
+
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Match Date</th>
+                <th scope="col">Host Team</th>
+                <th scope="col">Guest Team</th>
+                <th scope="col">Host Score</th>
+                <th scope="col">Guest Score</th>
+                <th scope="col">Status</th>
+                <th scope="col">Detial</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for match in matchs %}
+            <tr>
+                <td>{{match.match_date}}</td>
+                <td>{{match.host_team}}</td>
+                <td>{{match.guest_team}}</td>
+                <td>{{match.host_team_score}}</td>
+                <td>{{match.guest_team_score}}</td>
+                {% if match.host_status == 2 %}
+                <td>Won</td>
+                {% elif match.host_status == 1 %}
+                <td>Draw</td>
+                {%else%}
+                <td>Lost</td>
+                {%endif%}
+                <td><a class="btn btn-primary" href="{% url 'match_detial' pk=match.id %}">detial</a></td>
+                <td><a class="btn btn-warning" href="{% url 'match_update' pk=match.id %}">update</a></td>
+                <td><a class="btn btn-danger" href="{% url 'match_delete' pk=match.id %}">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% if is_paginated %}
+    {% include "_pagination.html" %}
+{% endif %}
+
+
+
+{% endblock content %}

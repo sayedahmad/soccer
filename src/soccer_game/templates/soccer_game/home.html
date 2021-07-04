@@ -1,0 +1,52 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+    Home 
+{% endblock title %} 
+
+{%block content %} 
+
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Last Week Matchs{{match.id}}</h5>
+    </div>
+    <div class="card-body">
+
+    <table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Host Team</th>
+                <th scope="col">Guest Team</th>
+                <th scope="col">Host Score</th>
+                <th scope="col">Guest Score</th>
+                <th scope="col">Status</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            {% for match in matchs %}
+            <tr>
+                <td>{{match.host_team}}</td>
+                <td>{{match.guest_team}}</td>
+                <td>{{match.host_team_score}}</td>
+                <td>{{match.guest_team_score}}</td>
+                {% if match.host_status == 2 %}
+                <td>Won</td>
+                {% elif match.host_status == 1 %}
+                <td>Draw</td>
+                {%else%}
+                <td>Lost</td>
+                {%endif%}
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>        
+
+    </div>
+</div>
+
+
+{% endblock content %}
