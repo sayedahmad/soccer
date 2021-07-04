@@ -14,10 +14,15 @@ This project have the following applications
 ## How to run the application
 
 1. clone the project with `git clone https://github.com/ssahim/soccer.git`
-2. `cd soccer_proj`
+2. `cd soccer`
 3. create the python3 virtual environment with `python3 -m venv .`
-4. Activate the virtual environment with `source env bin/activate`
-5. install the requirements `pip install -r requiremnets.txt`
+4. Activate the virtual environment with `source bin/activate`
+5. install the requirements `pip install -r requirements.txt`
 6. perform `python src/manage.py makemigrations` and ` python src/manage.py migrate` to populate the database.
 7. run the application with `python src/manage.py runserver`
-8. open the browser and navigate to `localhost:8888`
+8. open the browser and navigate to `localhost:8000`
+
+
+**Note**
+
+I have included cdn for bootstrap and javascript. if there is no internet then you might experience problems
