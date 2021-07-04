@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+    {{team.name}} 
+{% endblock title %} 
+
+{%block content %} 
+<!--shows detail of a team-->
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">{{team.name}}</h5>
+    </div>
+    <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">Team name</dt>
+      <dd class="col-sm-9">{{ team.name }}</dd>
+      <dt class="col-sm-3">Total Matchs</dt>
+            <dd class="col-sm-9">{{ team.total_matches}}</dd>
+
+      <dt class="col-sm-3">Total Won</dt>
+      <dd class="col-sm-9">{{ team.total_win }}</dd>
+      <dt class="col-sm-3">Total Draw</dt>
+      <dd class="col-sm-9">{{ team.total_Draw }}</dd>
+      <dt class="col-sm-3">Total Lost</dt>
+      <dd class="col-sm-9">{{ team.total_lost }}</dd>
+      <dt class="col-sm-3">Total Marks</dt>
+      <dd class="col-sm-9">{{ team.total_marks }}</dd>
+      <dt class="col-sm-3">Ranking</dt>
+      <dd class="col-sm-9">{{ team.ranking }}</dd>
+      
+   
+    </dl>
+
+    </div>
+</div>
+{% endblock content %}

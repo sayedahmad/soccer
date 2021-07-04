@@ -1,0 +1,30 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+    Match {{match.id}} 
+{% endblock title %} 
+
+{%block content %} 
+
+<!--shows detial of a single match-->
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Match Details #{{match.id}}</h5>
+    </div>
+    <div class="card-body">
+    <dl class="row">
+      <dt class="col-sm-3">Host Team</dt>
+      <dd class="col-sm-9">{{ match.host_team }}</dd>
+      <dt class="col-sm-3">Host Team Scores</dt>
+      <dd class="col-sm-9">{{ match.host_team_score }}</dd>
+      <dt class="col-sm-3">Guest Team</dt>
+      <dd class="col-sm-9">{{ match.guest_team }}</dd>
+      <dt class="col-sm-3">Guest Team Scores</dt>
+      <dd class="col-sm-9">{{ match.guest_team_score }}</dd>
+      
+    </dl>
+
+    </div>
+</div>
+{% endblock content %}

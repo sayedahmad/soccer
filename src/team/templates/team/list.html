@@ -1,0 +1,85 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+{% block title %} 
+    Teams 
+{% endblock title %} 
+
+{%block content %} 
+<!-- shows a list of teams in a table with action section-->
+<a class="btn btn-primary" href="{% url 'team_register' %}"><i class="fa fa-plus" aria-hidden="true"> Add</i><i> </a>
+
+
+<table class="table">
+    <tr>
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Team Name</th>
+                <th scope="col">Ranking</th>
+                <th scope="col">Detial</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in teams %}
+            <tr>
+               
+                <td>{{team.name}}</td>
+                <td>{{team.ranking}}</td>
+                <td><a class="btn btn-primary" href="{% url 'team_detial' pk=team.id %}">detial</a></td>
+                <td><a class="btn btn-warning" href="{% url 'team_update' pk=team.id %}">update</a></td>
+                <td><a class="btn btn-danger" href="{% url 'team_delete' pk=team.id %}">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
+{% if is_paginated %}
+    {% include "_pagination.html" %}
+{% endif %}
+
+
+
+<div class="mt-6">
+<h1>Team Ranking</h1>
+  <canvas id="myChart"></canvas>
+
+</div>
+
+
+<script type="text/javascript">
+
+const labels ={{team_lables|safe}};
+const data = {
+  labels: labels,
+  datasets: [{
+    label: "Team Ranking",
+    backgroundColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(255, 99, 132)',
+    data: {{team_rank|safe}},
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+  }]
+};
+
+
+const config = {
+  type: 'bar',
+  data,
+  options: {}
+};
+
+
+ var myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+{% endblock content %}
